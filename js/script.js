@@ -9,8 +9,7 @@ window.addEventListener('DOMContentLoaded', function() {
     function hideTabContent() {
 
         tabsContent.forEach(item => {
-            item.classList.add('hide');
-            item.classList.remove('show', 'fade');
+            item.style.display='none'
         });
 
         tabs.forEach(item => {
@@ -19,21 +18,21 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     function showTabContent(i = 0) {
-        tabsContent[i].classList.add('show', 'fade');
-        tabsContent[i].classList.remove('hide');
+
+        tabsContent[i].style.display='block'
         tabs[i].classList.add('tabheader__item_active');
     }
 
 
     tabsParent.addEventListener('click', function(event) {
         const target = event.target;
-        if(target && target.classList.contains('tabheader__item')) {
+
             tabs.forEach((item, i) => {
-                if (target == item) {
+                if (target === item) {
                     hideTabContent();
                     showTabContent(i);
                 }
             });
-        }
+
     });
 });

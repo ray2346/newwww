@@ -1,28 +1,41 @@
-const btn = document.querySelector('.btn');
-let timeId;
-i = 0;
+window.addEventListener('DOMContentLoaded', function() {
 
-function MyAnimation() {
+    // Tabs
 
-    const elem = document.querySelector('.box')
-    let position = 0;
+    let tabs = document.querySelectorAll('.tabheader__item'),
+        tabsContent = document.querySelectorAll('.tabcontent'),
+        tabsParent = document.querySelector('.tabheader__items');
 
+    function hideTabContent() {
 
+        tabsContent.forEach(item => {
+            item.classList.add('hide');
+            item.classList.remove('show', 'fade');
+        });
 
-    function peredvijenie() {
-        if (position === 600) {
-            clearInterval(id)
-        } else {
-            position++;
-            elem.style.top = position + 'px';
-            // elem.style.left = position + 'px';
-        }if (elem.style.top === '300px'){
-            elem.style.left = position + 'px';
-        }
-
+        tabs.forEach(item => {
+            item.classList.remove('tabheader__item_active');
+        });
     }
-    const id =setInterval(peredvijenie,10)
-}
 
+    function showTabContent(i = 0) {
+        tabsContent[i].classList.add('show', 'fade');
+        tabsContent[i].classList.remove('hide');
+        tabs[i].classList.add('tabheader__item_active');
+    }
 
-btn.addEventListener('click',MyAnimation)
+    hideTabContent();
+    showTabContent();
+
+    tabsParent.addEventListener('click', function(event) {
+        const target = event.target;
+        if(target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+        }
+    });
+});lick',MyAnimation)

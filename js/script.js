@@ -1,38 +1,28 @@
-window.addEventListener('DOMContentLoaded', function() {
+const btn = document.querySelector('.btn');
+let timeId;
+i = 0;
 
-    // Tabs
+function MyAnimation() {
 
-    let tabs = document.querySelectorAll('.tabheader__item'),
-        tabsContent = document.querySelectorAll('.tabcontent'),
-        tabsParent = document.querySelector('.tabheader__items');
+    const elem = document.querySelector('.box')
+    let position = 0;
 
-    function hideTabContent() {
 
-        tabsContent.forEach(item => {
-            item.style.display='none'
-        });
 
-        tabs.forEach(item => {
-            item.classList.remove('tabheader__item_active');
-        });
+    function peredvijenie() {
+        if (position === 600) {
+            clearInterval(id)
+        } else {
+            position++;
+            elem.style.top = position + 'px';
+            // elem.style.left = position + 'px';
+        }if (elem.style.top === '300px'){
+            elem.style.left = position + 'px';
+        }
+
     }
-
-    function showTabContent(i = 0) {
-
-        tabsContent[i].style.display='block'
-        tabs[i].classList.add('tabheader__item_active');
-    }
+    const id =setInterval(peredvijenie,10)
+}
 
 
-    tabsParent.addEventListener('click', function(event) {
-        const target = event.target;
-
-            tabs.forEach((item, i) => {
-                if (target === item) {
-                    hideTabContent();
-                    showTabContent(i);
-                }
-            });
-
-    });
-});
+btn.addEventListener('click',MyAnimation)

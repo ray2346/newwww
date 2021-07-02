@@ -95,4 +95,42 @@ window.addEventListener('DOMContentLoaded', function() {
 
     setClock('.timer', deadline);
 
+
+// modalhyedal
+
+    const trigger = document.querySelectorAll('[data-open]'),
+        clModal = document.querySelector('[data-close]'),
+        modal = document.querySelector('.modal')
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            hideModal();
+        }
+    });
+
+
+    trigger.forEach(btn => {
+        btn.addEventListener('click', () => {
+            showModal();
+        });
+    })
+
+
+
+    function showModal() {
+        modal.classList.add('show')
+        modal.classList.remove('hide')
+        document.body.style.overflow='hidden';
+    }
+
+    function hideModal() {
+        modal.classList.add('hide')
+        modal.classList.remove('show')
+        document.body.style.overflow='';
+    }
+    clModal.addEventListener('click', () => {
+        hideModal();
+
+    })
+
 });

@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     const trigger = document.querySelectorAll('[data-open]'),
         clModal = document.querySelector('[data-close]'),
-        modal = document.querySelector('.modal')
+        modal = document.querySelector('.modal');
 
     modal.addEventListener('click', (event) => {
         if (event.target === modal) {
@@ -113,24 +113,24 @@ window.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', () => {
             showModal();
         });
-    })
+    });
 
 
 
     function showModal() {
-        modal.classList.add('show')
-        modal.classList.remove('hide')
+        modal.classList.add('show');
+        modal.classList.remove('hide');
         document.body.style.overflow='hidden';
     }
 
     function hideModal() {
-        modal.classList.add('hide')
-        modal.classList.remove('show')
+        modal.classList.add('hide');
+        modal.classList.remove('show');
         document.body.style.overflow='';
     }
     clModal.addEventListener('click', () => {
         hideModal();
 
-    })
+    });
 
 });
